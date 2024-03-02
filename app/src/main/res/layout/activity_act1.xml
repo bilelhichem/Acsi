@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Act1"
+    >
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Hello dear programmers"
+    android:textSize="25dp"
+    android:fontFamily="@font/poppins_light"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="30dp"
+    android:textStyle="bold"
+    android:textColor="@color/black"
+
+    >
+
+</TextView>
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/tenor"
+        android:layout_centerInParent="true"
+        />
+</RelativeLayout>
