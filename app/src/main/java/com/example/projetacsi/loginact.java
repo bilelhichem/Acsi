@@ -2,6 +2,7 @@ package com.example.projetacsi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,8 +25,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class loginact extends AppCompatActivity {
     TextView textreg ;
+    // ///////////////////////////retrofit api
     private Retrofit retrofit;
     private RetfrofitInterface retrofitInterface;
+
+    // local host de server
     private String BASE_URL = "http://192.168.43.234:3000";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +51,7 @@ public class loginact extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         retrofitInterface = retrofit.create(RetfrofitInterface.class);
-     Login();
+        Sign_In();
         textreg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,9 +65,24 @@ public class loginact extends AppCompatActivity {
         textreg = findViewById(R.id.textreg);
     }
 
+    public static boolean Verifier_Infos( String email, String password, Context context) {
+       if (email.isEmpty()) {
+            Toast.makeText(context, "Le champ du email ne peut pas être vide", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (password.isEmpty()) {
+            Toast.makeText(context, "Le champ du password ne peut pas être vide", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if (password.length() < 6) {
+            Toast.makeText(context, "Le mot de passe doit contenir au moins 6 caractères", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 
-    private void Login() {
+
+    private void Sign_In() {
 
         Button signupBtn = findViewById(R.id.signin);
         final EditText emailEdit = findViewById(R.id.email);
@@ -72,18 +91,11 @@ public class loginact extends AppCompatActivity {
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("hany hena");
-                HashMap<String, String> map = new HashMap<>();
+                if (Verifier_Infos( emailEdit.getText().toString(),passwordEdit.getText().toString(),loginact.this)){
 
-                map.put("email", emailEdit.getText().toString());
-                map.put("password", passwordEdit.getText().toString());
-               if (emailEdit.getText().toString().isEmpty()) {
-                    Toast.makeText(loginact.this, "Le champ du email ne peut pas être vide", Toast.LENGTH_SHORT).show();
-                }else if (passwordEdit.getText().toString().isEmpty()) {
-                    Toast.makeText(loginact.this, "Le champ du password ne peut pas être vide", Toast.LENGTH_SHORT).show();
-                } else if (passwordEdit.getText().toString().length() < 6) {
-                    Toast.makeText(loginact.this, "Le mot de passe doit contenir au moins 6 caractères", Toast.LENGTH_SHORT).show();
-                } else {
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put("email", emailEdit.getText().toString());
+                    map.put("password", passwordEdit.getText().toString());
                     Call<Void> call = retrofitInterface.executelogin(map);
 
 
@@ -117,7 +129,13 @@ public class loginact extends AppCompatActivity {
                         }
 
                     });
+                }else {
+                    Verifier_Infos( emailEdit.getText().toString(),passwordEdit.getText().toString(),loginact.this);
                 }
+
+
+
+
 
 
 

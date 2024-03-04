@@ -10,7 +10,7 @@
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Hello dear programmers"
+    android:text="Hello dear programmers "
     android:textSize="25dp"
     android:fontFamily="@font/poppins_light"
     android:layout_centerHorizontal="true"
@@ -26,5 +26,23 @@
         android:layout_height="wrap_content"
         android:src="@drawable/tenor"
         android:layout_centerInParent="true"
+        android:id="@+id/ikram"
         />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I am Dadoune Ikram "
+        android:textSize="25dp"
+        android:fontFamily="@font/poppins_light"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_below="@+id/ikram"
+
+        >
+
+    </TextView>
 </RelativeLayout>

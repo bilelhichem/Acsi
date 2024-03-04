@@ -7,6 +7,8 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface RetfrofitInterface {
+
+    // transfert data from java to register function in node js
     @POST("api/RegisterUser")
     Call<Void> executeSignup (@Body HashMap<String, String> map);
     @POST("api/LoginUser")

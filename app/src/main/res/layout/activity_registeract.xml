@@ -116,8 +116,9 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/bal1"
             android:textSize="12dp"
+
             android:hint="Confirme Your Password"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:padding="8dp"
             android:textColor="@color/white"
             android:textColorHint="#757575">
